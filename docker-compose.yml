@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  vite:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: npm run container:dev
+    ports:
+      - $APP_EXTERNAL_PORT:$APP_INTERNAL_PORT
+    container_name: $APP_CONTAINER_NAME
+    volumes:
+      - .:/app
+    environment:
+      - PORT=$APP_INTERNAL_PORT
+    env_file:
+      - ./.env
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
