@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from '@mui/material';
 
 const ImgCard = ({ alt, src, title, description }) => {
     return (
@@ -24,7 +25,11 @@ const ImgCard = ({ alt, src, title, description }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Jugar</Button>
+                <Button size="small">
+                    <Link href="/game/1" style={{ textDecoration: 'none' }}>
+                        Ver
+                    </Link>
+                </Button>
             </CardActions>
         </Card>
     );
