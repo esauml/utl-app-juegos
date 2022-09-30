@@ -1,4 +1,4 @@
-import { Navbar } from './components';
+import { Footer, Navbar } from './components';
 import { StyledEngineProvider } from '@mui/material/styles';
 import {
   BrowserRouter as Router, Route, Routes as Switch
@@ -18,6 +18,9 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/top-games' element={<TopGames />} />
         </Switch>
+
+        <Footer />
+
       </Router>
     </StyledEngineProvider>
   )
