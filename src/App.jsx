@@ -1,9 +1,9 @@
-import { Footer, Navbar } from './components';
 import { StyledEngineProvider } from '@mui/material/styles';
 import {
   BrowserRouter as Router, Route, Routes as Switch
 } from "react-router-dom";
-import { Home, TopGames } from './pages';
+import { Footer, Navbar } from './components';
+import { Home, TopGames, GamePage } from './pages';
 
 function App() {
 
@@ -17,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/top-games' element={<TopGames />} />
+          <Route path='/game/:id' element={<GamePage />} />
         </Switch>
 
         <Footer />
