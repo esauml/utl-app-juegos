@@ -5,7 +5,7 @@ import React from 'react';
 
 const GameCards = ({ }) => {
     let cards = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 8; i++) {
         cards.push(
             <Grid item key={i}>
                 <ImgCard

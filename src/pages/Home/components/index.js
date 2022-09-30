@@ -1,2 +1,2 @@
 export * from './GameCards';
-export * from './index';
+export * from './SideList';
