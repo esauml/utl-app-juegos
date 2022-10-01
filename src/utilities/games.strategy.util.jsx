@@ -1,15 +1,10 @@
-import { AdivinaNumero } from "@/games";
-
-// Strategy Pattern (Strategy) For Games
-const context = {
-    1: <AdivinaNumero />,
-    2: <div>Otro Juego</div>
-};
+import { getGameById } from "../data/games";
 
 const GameStrategy = ({ id }) => {
+    const { component } = getGameById(id);
     return (
         <>
-            {context[id]}
+            {component}
         </>
     )
 }

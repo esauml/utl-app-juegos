@@ -3,13 +3,12 @@ import { Stack } from "@mui/system";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { GameStrategy } from "@/utilities";
-import { games } from "@/data";
+import { getGameById } from "../../data/games";
 
 const GamePage = () => {
     const { id } = useParams();
 
-    const { id: gameId, name, description } = games[id];
-    console.log(name, description);
+    const { id: gameId, name, description } = getGameById(Number(id));
 
     return (
         <>
