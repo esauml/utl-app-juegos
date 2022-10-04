@@ -68,7 +68,7 @@ jobs:
           name: dist
           path: dist
       - name: Test
-        run: npm test:unit
+        run: npm run test:unit
 
   # e2e:
   #   needs: [lint, build]
