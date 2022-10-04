@@ -1,14 +1,15 @@
 // function that creates a n digit number with random numbers
-// numbers are cant be repeated and cant start with 0 to 9
+// numbers are cant be repeated and cant start with 1 to 9
 // returns a array with the numbers
-const randomChoice = (n = 1) => {
-    const numbers = [];
-    for (let i = 0; i < n; i++) {
+export const randomChoice = (n = 1) => {
+    let numbers = [];
+    let i = 0;
+    while (i < n) {
         let number = Math.floor(Math.random() * 10);
-        while (numbers.includes(number) || number === 0) {
-            number = Math.floor(Math.random() * 10);
+        if (numbers.indexOf(number) === -1 && number !== 0) {
+            numbers.push(number);
+            i++;
         }
-        numbers.push(number);
     }
     return numbers;
 }
@@ -18,7 +19,7 @@ const randomChoice = (n = 1) => {
 // also check how many numbers are the same but in different position
 // also check if numbers in array 1 are bigger than numbers in array 2
 // returns an array with the number of numbers in the same position, the number of numbers in different position and if the first array is bigger than the second array
-const checkNumbers = (numbers, randomNumbers) => {
+export const checkNumbers = (numbers, randomNumbers) => {
     let samePosition = 0;
     let sameNumber = 0;
     for (let i = 0; i < numbers.length; i++) {
