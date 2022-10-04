@@ -1,7 +1,9 @@
+// eslint-disable-next-line no-undef
 module.exports = {
 	'env': {
 		'browser': true,
-		'es2021': true
+		'es2021': true,
+		'jest': true,
 	},
 	'extends': [
 		'eslint:recommended',
@@ -33,5 +35,7 @@ module.exports = {
 			'error',
 			'always'
 		]
-	}
+	},
+	// ignore dist folder
+	'ignorePatterns': ['dist/']
 };
