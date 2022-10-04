@@ -2,6 +2,9 @@
 
 This is a simple react-redux-typescript project.
 
+# Status Summary
+[![Deployment Pipeline](https://github.com/esauml/utl-app-juegos/actions/workflows/pipeline.yml/badge.svg?branch=develop)](https://github.com/esauml/utl-app-juegos/actions/workflows/pipeline.yml)
+
 ## 1.1. Table of Contents
 
 - [1. React-redux-typescript](#1-react-redux-typescript)
