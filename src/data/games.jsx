@@ -6,15 +6,19 @@ const games = [
 		id: 1,
 		name: 'Adivina el número',
 		description: 'Adivina el número que estoy pensando',
-		image: 'https://i.imgur.com/3J3YQYx.png',
-		component: <AdivinaNumero />
+		image: 'https://images-na.ssl-images-amazon.com/images/I/51848OMGGeL.png',
+		component: <AdivinaNumero />,
+		alt: 'Adivina el número',
+		date: '2021-10-01',
 	},
 	{
 		id: 2,
-		name: 'Adivina el número 2',
-		description: 'Adivina el número que estoy pensando',
-		image: 'https://i.imgur.com/3J3YQYx.png',
-		component: <div>Otro Juego</div>
+		name: 'Example component',
+		description: 'example component description',
+		image: 'https://mui.com/static/images/cards/contemplative-reptile.jpg',
+		component: <div>Otro Juego</div>,
+		alt: 'alta de prueba',
+		date: '2021-10-01',
 	}
 ];
 
@@ -23,7 +27,9 @@ const defaultGame = {
 	name: 'No existe',
 	description: 'No existe',
 	image: 'https://i.imgur.com/3J3YQYx.png',
-	component: <div>Not Found</div>
+	component: <div>Not Found</div>,
+	alt: 'Not Found',
+	date: '2021-10-01',
 };
 
 /**
