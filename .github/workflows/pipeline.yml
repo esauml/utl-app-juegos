@@ -98,7 +98,9 @@ jobs:
     needs: [test]
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - name : Checkout
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - uses: actions/download-artifact@v2
@@ -106,7 +108,6 @@ jobs:
           name: dist
           path: dist
       - name: Deploy Develop to firebase hosting
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
