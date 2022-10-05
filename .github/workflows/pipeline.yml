@@ -98,9 +98,8 @@ jobs:
     needs: [test]
     runs-on: ubuntu-18.04
     steps:
-      - name: decision to proceed
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
       - uses: actions/checkout@v2
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
         with:
           fetch-depth: 0
       - uses: actions/download-artifact@v2
