@@ -11,10 +11,17 @@ const TopGames = () => {
 		return new Date(b.date) - new Date(a.date);
 	}).slice(0, 4);
 
+	const carouselImages = gamesByDate.map((game) => {
+		return {
+			url: game.image,
+			caption: game.caption,
+		};
+	});
+
 
 	return (
 		<>
-			<ImgCarousel />
+			<ImgCarousel slideImages={carouselImages} />
 
 			<Container maxWidth="lg">
 				<h1>LO MÁS NUEVO</h1>

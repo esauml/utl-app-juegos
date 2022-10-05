@@ -10,6 +10,7 @@ const games = [
 		component: <AdivinaNumero />,
 		alt: 'Adivina el número',
 		date: '2021-10-01',
+		caption: 'Adivina el número',
 	},
 	{
 		id: 2,
@@ -19,6 +20,7 @@ const games = [
 		component: <div>Otro Juego</div>,
 		alt: 'alta de prueba',
 		date: '2021-10-01',
+		caption: 'componente de prueba',
 	}
 ];
 
@@ -30,6 +32,7 @@ const defaultGame = {
 	component: <div>Not Found</div>,
 	alt: 'Not Found',
 	date: '2021-10-01',
+	caption: 'Not Found',
 };
 
 /**
