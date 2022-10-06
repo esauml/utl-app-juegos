@@ -107,17 +107,15 @@ jobs:
           path: dist
       - name: Deploy Develop to firebase hosting
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
-        uses: FirebaseExtended/action-hosting-deploy@v0
+        uses: w9jds/firebase-action@master
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_UTL_APP_JUEGOS }}"
-          projectId: utl-app-juegos
-          channelId: develop
-      - name: Deploy prod to firebase hosting
+          args: hosting:channel:deploy develop
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Deploy Prod to firebase hosting
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        uses: FirebaseExtended/action-hosting-deploy@v0
+        uses: w9jds/firebase-action@master
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_UTL_APP_JUEGOS }}"
-          projectId: utl-app-juegos
-          channelId: live
+          args: firebase deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
