@@ -1,8 +1,9 @@
 import { Pagination } from '@/components';
 import { Container, Divider, Grid, Paper, Stack } from '@mui/material';
 import React from 'react';
+import { CardItems } from '../../components';
+import games from '../../data/games';
 import { SideList } from './components';
-import { GameCards } from './components/';
 
 const Home = () => {
 
@@ -18,7 +19,7 @@ const Home = () => {
 				<Container maxWidth="lg">
 					<h2>Home</h2>
 					<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-						<GameCards />
+						<CardItems items={games} />
 					</Grid>
 					<Paper elevation={0} sx={{ display: 'flex', justifyContent: 'center', p: 2, m: 1, bgcolor: 'background.paper' }}>
 						<Pagination count={5} color="primary" />
