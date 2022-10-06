@@ -1,11 +1,10 @@
 ## Category/Component
-<!-- https://martinfowler.com/articles/ship-show-ask.html -->
+
 <!-- Uncomment what you need -->
 <!-- #### `🚢 Ship` <!-- (should never be used for PR) -->
 <!-- #### `🔍 Show` -->
 <!-- #### `❓ Ask` -->
 
-<!-- https://github.com/SUI-Components/sui-components/issues -->
 **TASK**: <!--- #issueID -->
 
 ### Types of changes
