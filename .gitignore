@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .github/workflows/firebase-hosting-pull-request.yml
 .github/workflows/firebase-hosting-merge.yml
+
+# firebase cache
+.firebase

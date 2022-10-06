@@ -1,3 +1,4 @@
+export * from './CardItems';
 export * from './Footer';
 export * from './ImgCard';
 export * from './ListItem';

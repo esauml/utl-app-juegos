@@ -11,17 +11,16 @@ describe('core: juego adivina numero', () => {
 
 	it('Verificación de numeros', () => {
 		const random = randomChoice(1);
-		const numbers = [5];
-		const result = checkNumbers(numbers, random);
+		const numbers = 5;
+		const result = checkNumbers(numbers, random[0]);
 
-		// check result to be an array
-		expect(result).toBeInstanceOf(Array);
+		// check result to be a number
+		expect(typeof result).toBe('number');
 
-		// check result to be an array with 3 elements
-		expect(result).toHaveLength(3);
+		// check result to be 1, -1 or 0
+		expect(result).toBeGreaterThanOrEqual(-1);
+		expect(result).toBeLessThanOrEqual(1);
 
-		// check if the last element is a boolean value
-		expect(typeof result[2]).toBe('boolean');
 	});
 
 });

@@ -1,31 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
-const slideImages = [
-	{
-		url: 'https://mui.com/static/images/cards/contemplative-reptile.jpg',
-		caption: 'Slide 1'
-	},
-	{
-		url: 'https://mui.com/static/images/cards/contemplative-reptile.jpg',
-		caption: 'Slide 2'
-	},
-	{
-		url: 'https://mui.com/static/images/cards/contemplative-reptile.jpg',
-		caption: 'Slide 3'
-	},
-	{
-		url: 'https://mui.com/static/images/cards/contemplative-reptile.jpg',
-		caption: 'Slide 3'
-	},
-	{
-		url: 'https://mui.com/static/images/cards/contemplative-reptile.jpg',
-		caption: 'Slide 3'
-	},
-];
-
-const ImgCarousel = () => {
+const ImgCarousel = ({ slideImages }) => {
 	return (
 		<div className="slide-container">
 			<Slide>
@@ -39,6 +17,10 @@ const ImgCarousel = () => {
 			</Slide>
 		</div >
 	);
+};
+
+ImgCarousel.propTypes = {
+	slideImages: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ImgCarousel;

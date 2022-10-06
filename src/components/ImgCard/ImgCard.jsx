@@ -5,22 +5,23 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
 import PropTypes from 'prop-types';
+import * as React from 'react';
 
 
-const ImgCard = ({ alt, src, title, description }) => {
+const ImgCard = ({ id, alt, image, name, description }) => {
+	const gameHref = `/game/${id}`;
 	return (
 		<Card sx={{ maxWidth: 345 }}>
 			<CardMedia
 				component="img"
 				alt={alt}
 				height="140"
-				image={src}
+				image={image}
 			/>
 			<CardContent>
 				<Typography gutterBottom variant="h5" component="div">
-					{title}
+					{name}
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
 					{description}
@@ -28,7 +29,7 @@ const ImgCard = ({ alt, src, title, description }) => {
 			</CardContent>
 			<CardActions>
 				<Button size="small">
-					<Link href="/game/1" style={{ textDecoration: 'none' }}>
+					<Link href={gameHref} style={{ textDecoration: 'none' }}>
                         Ver
 					</Link>
 				</Button>
@@ -38,9 +39,10 @@ const ImgCard = ({ alt, src, title, description }) => {
 };
 
 ImgCard.propTypes = {
+	id: PropTypes.number.isRequired,
 	alt: PropTypes.string.isRequired,
-	src: PropTypes.string.isRequired,
-	title: PropTypes.string.isRequired,
+	image: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,
 };
 
