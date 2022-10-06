@@ -15,9 +15,29 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
+  
+  download_cache_packages:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Cache node modules
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: download download
+        run: npm ci
+      - name: Cache node modules
+        uses: actions/upload-artifact@v2
+        with:
+          name: node_modules
+          path: node_modules
+          retention-days: 1
 
   lint:
     runs-on: ubuntu-18.04
+    needs: download_cache_packages
     steps:
       - uses: actions/checkout@v2
         with:
@@ -26,13 +46,16 @@ jobs:
         with:
           cache: "npm"
           node-version: "14"
-      - name: Install dependencies
-        run: npm ci
+      - uses: actions/download-artifact@v2
+        with:
+          name: node_modules
+          path: node_modules
       - name: Lint
         run: npm run lint
 
   build:
     runs-on: ubuntu-18.04
+    needs: download_cache_packages
     steps:
       - uses: actions/checkout@v2
         with:
@@ -41,8 +64,10 @@ jobs:
         with:
           cache: "npm"
           node-version: "14"
-      - name: Install dependencies
-        run: npm ci
+      - uses: actions/download-artifact@v2
+        with:
+          name: node_modules
+          path: node_modules
       - name: Build
         run: npm run vite:build
       - uses: actions/upload-artifact@v2
@@ -61,8 +86,10 @@ jobs:
         with:
           cache: "npm"
           node-version: "14"
-      - name: Install dependencies
-        run: npm ci
+      - uses: actions/download-artifact@v2
+        with:
+          name: node_modules
+          path: node_modules
       - uses: actions/download-artifact@v2
         with:
           name: dist
