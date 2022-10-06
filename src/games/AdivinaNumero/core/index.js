@@ -1,17 +1,16 @@
 // function that creates a n digit number with random numbers
-// numbers are cant be repeated and cant start with 1 to 9
+// inputs range: min and max and the number of digits
+// numbers are cant be repeated
 // returns a array with the numbers
-export const randomChoice = (n = 1) => {
-	let numbers = [];
-	let i = 0;
-	while (i < n) {
-		let number = Math.floor(Math.random() * 10);
-		if (numbers.indexOf(number) === -1 && number !== 0) {
-			numbers.push(number);
-			i++;
+export const randomChoice = (n = 1, min = 1, max = 10) => {
+	const result = [];
+	while (result.length < n) {
+		const random = Math.floor(Math.random() * (max - min + 1)) + min;
+		if (result.indexOf(random) === -1) {
+			result.push(random);
 		}
 	}
-	return numbers;
+	return result;
 };
 
 // function that receives two arrays of numbers 
