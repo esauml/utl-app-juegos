@@ -1,5 +1,8 @@
 # 1. React-redux-typescript
 
+prod: [![Deployment Pipeline](https://github.com/esauml/utl-app-juegos/actions/workflows/pipeline.yml/badge.svg?branch=main&event=push)](https://github.com/esauml/utl-app-juegos/actions/workflows/pipeline.yml)
+develop: [![Deployment Pipeline](https://github.com/esauml/utl-app-juegos/actions/workflows/pipeline.yml/badge.svg?branch=develop&event=push)](https://github.com/esauml/utl-app-juegos/actions/workflows/pipeline.yml)
+
 This is a simple react-redux-typescript project.
 
 ## 1.1. Table of Contents
