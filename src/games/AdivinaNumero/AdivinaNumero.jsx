@@ -1,4 +1,4 @@
-import { Badge, Button, ButtonGroup, Chip, Container, Divider, Stack, TextField } from '@mui/material';
+import { Badge, Button, ButtonGroup, Chip, Container, Stack, TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { TransitionAlert } from '../../components';
 import { checkNumbers, randomChoice } from './core';
