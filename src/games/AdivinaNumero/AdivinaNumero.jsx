@@ -1,7 +1,7 @@
+import { Badge, Button, ButtonGroup, Chip, Container, Divider, Stack, TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { Button, Stack } from '@mui/material';
-import { Container } from '@mui/material';
-import { randomChoice, checkNumbers } from './core';
+import { TransitionAlert } from '../../components';
+import { checkNumbers, randomChoice } from './core';
 
 const AdivinaNumero = () => {
 	// const
@@ -21,14 +21,15 @@ const AdivinaNumero = () => {
 	// State Management
 	
 	const [numero, setNumero] = useState('');
-	const [numeroUsuario, setNumeroUsuario] = useState(0);
+	const [numeroUsuario, setNumeroUsuario] = useState('');
 	const [numeroIntentos, setNumeroIntentos] = useState(0);
-	const [mensaje, setMensaje] = useState('Adivina el número');
+	const [mensaje, setMensaje] = useState('');
 	const [usedNumbers, setUsedNumbers ] = useState([]);
 	const [difficultyLevel, setDifficultyLevel] = useState('');
 	const [maxIntentos, setMaxIntentos] = useState(0);
 	const [range, setRange] = useState([0, 0]);
 	const [gameStatus, setGameStatus] = useState(status.chosing);
+	const [error, setError] = useState(false);
 
 	// Function to handle interaction with the user
 
@@ -39,6 +40,12 @@ const AdivinaNumero = () => {
 	// Functions to handle dynamic rendering of the game
 
 	const handleButton = () => {
+
+		// Check if the user has entered a number
+		if (numeroUsuario === '') {
+			setError(true);
+			return;
+		}
 
 		// game
 		if (numeroIntentos < maxIntentos) {
@@ -88,34 +95,48 @@ const AdivinaNumero = () => {
 
 	const renderDifficultyLevel = () => {
 		return (
-			<Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '65vh' }}>
-				<Stack spacing={2} direction='row'>
-					<Button variant='contained' onClick={() => setGameDifficulty(dificultades.facil)}>Novato</Button>
-					<Button variant='contained' onClick={() => setGameDifficulty(dificultades.medio)}>Intermedio</Button>
-					<Button variant='contained' onClick={() => setGameDifficulty(dificultades.dificil)}>Experto</Button>
-				</Stack>
-			</Container>
+			<Stack spacing={2} direction='row'>
+				<Button variant='contained' onClick={() => setGameDifficulty(dificultades.facil)}>Novato</Button>
+				<Button variant='contained' onClick={() => setGameDifficulty(dificultades.medio)}>Intermedio</Button>
+				<Button variant='contained' onClick={() => setGameDifficulty(dificultades.dificil)}>Experto</Button>
+			</Stack>
 		);
 	};
 
 	const renderGame = () => {
 		return (
-			// TODO: agregar una mejora visual al contenido
-			<Container sx={{ justifyContent: 'center' }}>
-				<h1>{mensaje}</h1>
-				<h2>Dificultad: {difficultyLevel}</h2>
-				<h3>Numero de intentos: {numeroIntentos}</h3>
-				<h3>Numero de intentos restantes: {maxIntentos - numeroIntentos}</h3>
+			<Container>
+				{
+					error && <TransitionAlert open={error} setOpen={setError} message='Ups :( Debes introducir un valor' />
+				}
+				<h2>
+					{mensaje}
+				</h2>
+
+				<Stack spacing={2} direction='row' mt={2} justifyContent='center'>
+					<Chip label={`Modo ${difficultyLevel}`} />
+					<Chip label={`Intentos Máximos ${maxIntentos}`} />
+					<Badge badgeContent={maxIntentos - numeroIntentos} color='primary'>
+						<Chip label='Intentos restantes' />
+					</Badge>
+				</Stack>
+
 				<h3>Rango: {range[0]} - {range[1]}</h3>
 				{
-					(difficultyLevel === dificultades.facil) ?  <h3>Numeros usados: {usedNumbers.toLocaleString() }</h3> : ''
+					(difficultyLevel === dificultades.facil) ? <h3>Numeros usados: {usedNumbers.toLocaleString()}</h3> : ''
 				}
-				<input type="number" onChange={handleInput} step="1" value={numeroUsuario}/>
-				<button onClick={handleButton}>Adivinar</button>
-
-				{
-					<button onClick={() => window.location.reload()}>Reiniciar Juego</button>
-				}
+				<TextField type='number' onChange={handleInput} value={numeroUsuario}
+					size='small' label="Número" variant="outlined" />
+				
+				<br />
+				<br />
+				
+				<ButtonGroup variant="text" aria-label="text button group">
+					<Button onClick={handleButton}>Adivinar</Button>
+					{
+						<Button color='warning' onClick={() => window.location.reload()}>Reiniciar Juego</Button>
+					}
+				</ButtonGroup>
 				
 			</Container>
 		);
@@ -145,11 +166,11 @@ const AdivinaNumero = () => {
 	}, [numeroIntentos]);
 
 	return (
-		<div>
+		<Container sx={{ justifyContent: 'center', alignItems: 'center', height: '65vh', display: 'flex' }}>
 			{
 				renderFromStatus()
 			}
-		</div>
+		</Container>
 	);
 };
 

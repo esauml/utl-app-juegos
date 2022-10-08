@@ -4,3 +4,4 @@ export * from './ImgCard';
 export * from './ListItem';
 export * from './Navbar';
 export * from './Pagination';
+export * from './TransitionAlert';

@@ -27,6 +27,7 @@ const GamePage = () => {
 							p: 2,
 							textAlign: 'center',
 							color: 'text.secondary',
+							// backgroundColor: '#eeeeee',
 							flex: '1 1 0',
 						}}
 					>
