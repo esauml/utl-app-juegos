@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ButtonGroup, Button } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { Container } from '@mui/material';
 import { randomChoice, checkNumbers } from './core';
 
@@ -88,18 +88,19 @@ const AdivinaNumero = () => {
 
 	const renderDifficultyLevel = () => {
 		return (
-			<Container sx={{ justifyContent: 'center' }}>
-				<ButtonGroup variant="contained" aria-label="outlined primary button group">
-					<Button onClick={() => setGameDifficulty(dificultades.facil)}>Novato</Button>
-					<Button onClick={() => setGameDifficulty(dificultades.medio)}>Intermedio</Button>
-					<Button onClick={() => setGameDifficulty(dificultades.dificil)}>Experto</Button>
-				</ButtonGroup>
+			<Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '65vh' }}>
+				<Stack spacing={2} direction='row'>
+					<Button variant='contained' onClick={() => setGameDifficulty(dificultades.facil)}>Novato</Button>
+					<Button variant='contained' onClick={() => setGameDifficulty(dificultades.medio)}>Intermedio</Button>
+					<Button variant='contained' onClick={() => setGameDifficulty(dificultades.dificil)}>Experto</Button>
+				</Stack>
 			</Container>
 		);
 	};
 
 	const renderGame = () => {
 		return (
+			// TODO: agregar una mejora visual al contenido
 			<Container sx={{ justifyContent: 'center' }}>
 				<h1>{mensaje}</h1>
 				<h2>Dificultad: {difficultyLevel}</h2>
